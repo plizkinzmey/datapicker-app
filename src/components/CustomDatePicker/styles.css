@@ -144,3 +144,17 @@
 .custom-datepicker-wrapper .ant-picker-cell-disabled::before {
   background-color: transparent !important;
 }
+
+/* Стили для текущей даты */
+.custom-datepicker-wrapper .ant-picker-cell-today .ant-picker-cell-inner {
+  color: #d2233c !important;
+  font-weight: bold !important;
+}
+
+/* Убираем все виды рамок у текущей даты */
+.custom-datepicker-wrapper .ant-picker-cell-today::before,
+:where(.css-dev-only-do-not-override-xex5fb).ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-today
+  .ant-picker-cell-inner::before {
+  border: none !important;
+}
