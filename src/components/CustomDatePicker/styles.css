@@ -1,0 +1,19 @@
+.custom-datepicker-wrapper {
+  margin: 20px;
+}
+
+/* Кастомизация стилей DatePicker */
+.custom-datepicker-wrapper .ant-picker {
+  border-radius: 8px;
+  padding: 8px 12px;
+  border: 2px solid #d9d9d9;
+}
+
+.custom-datepicker-wrapper .ant-picker:hover {
+  border-color: #1890ff;
+}
+
+.custom-datepicker-wrapper .ant-picker-focused {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
