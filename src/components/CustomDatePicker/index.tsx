@@ -106,17 +106,22 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
   };
 
   const monthCellRender = (currentDate: Dayjs) => {
-    const isCurrentMonth =
-      currentDate.month() === dayjs().month() &&
-      currentDate.year() === dayjs().year();
+    const isCurrentMonth = currentDate.month() === dayjs().month() && 
+                          currentDate.year() === dayjs().year();
+    const isSelectedMonth = selectedDate && 
+                          currentDate.month() === selectedDate.month() &&
+                          currentDate.year() === selectedDate.year();
 
-    // Используем форматирование из antd локали
-    const monthName =
-      locale.lang.shortMonths?.[currentDate.month()] ||
-      currentDate.format("MMM");
+    const className = [
+      isSelectedMonth ? 'selected-cell' : '',
+      isCurrentMonth ? 'current-month-cell' : ''
+    ].filter(Boolean).join(' ');
+
+    const monthName = locale.lang.shortMonths?.[currentDate.month()] ||
+                     currentDate.format("MMM");
 
     return (
-      <div className={isCurrentMonth ? "current-month-cell" : ""}>
+      <div className={className}>
         {monthName}
       </div>
     );
@@ -124,8 +129,16 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
 
   const yearCellRender = (currentDate: Dayjs) => {
     const isCurrentYear = currentDate.year() === dayjs().year();
+    const isSelectedYear = selectedDate && 
+                         currentDate.year() === selectedDate.year();
+
+    const className = [
+      isSelectedYear ? 'selected-cell' : '',
+      isCurrentYear ? 'current-year-cell' : ''
+    ].filter(Boolean).join(' ');
+
     return (
-      <div className={isCurrentYear ? 'current-year-cell' : ''}>
+      <div className={className}>
         {currentDate.format('YYYY')}
       </div>
     );

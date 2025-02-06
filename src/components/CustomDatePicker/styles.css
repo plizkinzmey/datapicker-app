@@ -195,3 +195,22 @@
   color: #d2233c !important;
   font-weight: bold !important;
 }
+
+/* Стили для выбранного месяца и года */
+.custom-datepicker-wrapper .selected-cell {
+  font-weight: bold !important;
+}
+
+/* Стили для текущего месяца и года (более низкий приоритет) */
+.custom-datepicker-wrapper .current-month-cell,
+.custom-datepicker-wrapper .current-year-cell {
+  color: #d2233c !important;
+  font-weight: bold !important;
+}
+
+/* Стили для выбранной ячейки с текущей датой (более высокий приоритет) */
+.custom-datepicker-wrapper .selected-cell.current-month-cell,
+.custom-datepicker-wrapper .selected-cell.current-year-cell {
+  font-weight: bold !important;
+  color: inherit !important;
+}
