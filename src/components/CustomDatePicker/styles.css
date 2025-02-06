@@ -90,3 +90,57 @@
 .custom-datepicker-wrapper .ant-picker-header-prev-btn.disabled:hover {
   color: rgba(0, 0, 0, 0.25);
 }
+
+/* Стили для заблокированных ячеек */
+.custom-datepicker-wrapper .ant-picker-cell.ant-picker-cell-disabled {
+  color: rgba(0, 0, 0, 0.25) !important;
+  pointer-events: none;
+}
+
+.custom-datepicker-wrapper
+  .ant-picker-cell.ant-picker-cell-disabled
+  .ant-picker-cell-inner {
+  background: transparent !important;
+}
+
+.custom-datepicker-wrapper
+  .ant-picker-cell.ant-picker-cell-disabled:hover
+  .ant-picker-cell-inner {
+  background: transparent !important;
+}
+
+/* Стили для заблокированных ячеек всех типов */
+.custom-datepicker-wrapper .ant-picker-cell.ant-picker-cell-disabled,
+.custom-datepicker-wrapper
+  .ant-picker-cell.ant-picker-cell-disabled
+  .ant-picker-cell-inner,
+.custom-datepicker-wrapper
+  .ant-picker-month-panel
+  .ant-picker-cell-disabled
+  .ant-picker-cell-inner,
+.custom-datepicker-wrapper
+  .ant-picker-year-panel
+  .ant-picker-cell-disabled
+  .ant-picker-cell-inner {
+  background: none !important;
+  color: rgba(0, 0, 0, 0.25) !important;
+}
+
+.custom-datepicker-wrapper
+  .ant-picker-cell.ant-picker-cell-disabled:hover
+  .ant-picker-cell-inner,
+.custom-datepicker-wrapper
+  .ant-picker-month-panel
+  .ant-picker-cell-disabled:hover
+  .ant-picker-cell-inner,
+.custom-datepicker-wrapper
+  .ant-picker-year-panel
+  .ant-picker-cell-disabled:hover
+  .ant-picker-cell-inner {
+  background: none !important;
+}
+
+/* Убираем дополнительные эффекты при наведении */
+.custom-datepicker-wrapper .ant-picker-cell-disabled::before {
+  background-color: transparent !important;
+}

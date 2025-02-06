@@ -64,6 +64,25 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
     return locale;
   };
 
+  // Функция проверки заблокированных дат
+  const disabledDate = (current: Dayjs) => {
+    const currentDate = dayjs();
+
+    if (mode === "date") {
+      return current.isBefore(currentDate.startOf("month"));
+    }
+
+    if (mode === "month") {
+      return current.isBefore(currentDate.startOf("month"));
+    }
+
+    if (mode === "year") {
+      return current.isBefore(currentDate.startOf("year"));
+    }
+
+    return false;
+  };
+
   // Компонент для кнопки "Предыдущий"
   const PrevArrow = ({ onClick }: PrevArrowProps) => {
     const currentMonth = viewDate.startOf("month");
@@ -101,6 +120,7 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
         superPrevIcon={null}
         superNextIcon={null}
         prevIcon={<PrevArrow />}
+        disabledDate={disabledDate}
       />
     </div>
   );
