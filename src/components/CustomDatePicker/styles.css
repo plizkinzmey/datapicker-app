@@ -32,6 +32,20 @@
   text-align: left;
 }
 
+/* Отключаем сокращение месяца в заголовке */
+.custom-datepicker-wrapper .ant-picker-dropdown .ant-picker-header-view button {
+  text-transform: capitalize;
+}
+
+.custom-datepicker-wrapper .ant-picker-dropdown .ant-picker-header-view button > div {
+  white-space: normal;
+  width: auto;
+}
+
+.custom-datepicker-wrapper .ant-picker-cell-inner {
+  white-space: nowrap;
+}
+
 .custom-datepicker-wrapper .ant-picker-dropdown 
   .ant-picker-header-prev-btn, 
   .ant-picker-header-next-btn {

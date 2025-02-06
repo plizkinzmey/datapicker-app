@@ -34,10 +34,18 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
     }
   };
 
+  const customLocale = {
+    ...locale,
+    lang: {
+      ...locale.lang,
+      monthFormat: 'MMMM',
+    },
+  };
+
   return (
     <div className="custom-datepicker-wrapper">
       <DatePicker 
-        locale={locale} 
+        locale={customLocale}
         onChange={handleChange}
         onPanelChange={handlePanelChange}
         onOpenChange={handleOpenChange}
@@ -45,6 +53,7 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
         showToday={false}
         value={selectedDate}
         allowClear
+        format="D MMM YYYY"
         getPopupContainer={trigger =>
           trigger.parentElement ? trigger.parentElement : document.body
         }
