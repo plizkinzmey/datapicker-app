@@ -152,42 +152,24 @@
 }
 
 /* Убираем все виды рамок у текущей даты */
-.custom-datepicker-wrapper .ant-picker-cell-today::before,
-:where(.css-dev-only-do-not-override-xex5fb).ant-picker-dropdown
-  .ant-picker-cell-in-view.ant-picker-cell-today
+.custom-datepicker-wrapper
+  .ant-picker-cell-today
   .ant-picker-cell-inner::before {
   border: none !important;
 }
 
-/* Стили для текущей даты (приоритет ниже, чем у выбранной даты) */
-.custom-datepicker-wrapper .ant-picker-cell-today .ant-picker-cell-inner {
-  color: #d2233c !important;
-  font-weight: bold !important;
-}
-
-/* Убираем все виды рамок у текущей даты */
-.custom-datepicker-wrapper .ant-picker-cell-today::before,
-:where(.css-dev-only-do-not-override-xex5fb).ant-picker-dropdown
-  .ant-picker-cell-in-view.ant-picker-cell-today
-  .ant-picker-cell-inner::before {
-  border: none !important;
-}
-
-/* Стили для выбранной даты (более высокий приоритет) */
-:where(.css-dev-only-do-not-override-xex5fb).ant-picker-dropdown
-  .ant-picker-cell-in-view.ant-picker-cell-selected:not(
-    .ant-picker-cell-disabled
-  )
+/* Стили для выбранной даты */
+.custom-datepicker-wrapper
+  .ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-selected
   .ant-picker-cell-inner,
-:where(.css-dev-only-do-not-override-xex5fb).ant-picker-dropdown
-  .ant-picker-cell-in-view.ant-picker-cell-range-start:not(
-    .ant-picker-cell-disabled
-  )
+.custom-datepicker-wrapper
+  .ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-range-start
   .ant-picker-cell-inner,
-:where(.css-dev-only-do-not-override-xex5fb).ant-picker-dropdown
-  .ant-picker-cell-in-view.ant-picker-cell-range-end:not(
-    .ant-picker-cell-disabled
-  )
+.custom-datepicker-wrapper
+  .ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-range-end
   .ant-picker-cell-inner {
   background: #d2233c !important;
   color: white !important;
@@ -195,10 +177,9 @@
 }
 
 /* Стили для ховера на выбранной дате */
-:where(.css-dev-only-do-not-override-xex5fb).ant-picker-dropdown
-  .ant-picker-cell-in-view.ant-picker-cell-selected:not(
-    .ant-picker-cell-disabled
-  ):hover
+.custom-datepicker-wrapper
+  .ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-selected:hover
   .ant-picker-cell-inner {
   background: #d2233c !important;
 }
