@@ -81,6 +81,17 @@
   flex: 1;
 }
 
+/* Отключаем кликабельность заголовка десятилетий */
+.custom-datepicker-wrapper .ant-picker-year-panel .ant-picker-header-view button {
+  pointer-events: none;
+  cursor: default;
+}
+
+/* Убираем подсветку при наведении */
+.custom-datepicker-wrapper .ant-picker-year-panel .ant-picker-header-view button:hover {
+  color: inherit;
+}
+
 /* Стили для заблокированной кнопки навигации */
 .custom-datepicker-wrapper .ant-picker-header-prev-btn.disabled {
   color: rgba(0, 0, 0, 0.25);
