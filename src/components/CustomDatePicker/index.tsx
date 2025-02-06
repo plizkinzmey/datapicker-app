@@ -19,9 +19,12 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
       <DatePicker 
         locale={locale} 
         onChange={handleChange}
-        superNextIcon={null}
-        superPrevIcon={null}
         showToday={false}
+        getPopupContainer={trigger =>
+          trigger.parentElement ? trigger.parentElement : document.body
+        }
+        superPrevIcon={null}
+        superNextIcon={null}
       />
     </div>
   );

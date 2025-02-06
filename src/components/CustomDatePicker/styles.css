@@ -17,3 +17,29 @@
   border-color: #1890ff;
   box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
 }
+
+/* Всплывающий календарь */
+.custom-datepicker-wrapper .ant-picker-dropdown .ant-picker-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.custom-datepicker-wrapper .ant-picker-dropdown .ant-picker-header-view {
+  margin-right: auto;
+}
+
+.custom-datepicker-wrapper .ant-picker-dropdown 
+  .ant-picker-header-prev-btn, 
+  .ant-picker-dropdown 
+  .ant-picker-header-next-btn {
+  order: 2;
+  margin-left: 8px;
+}
+
+.custom-datepicker-wrapper .ant-picker-dropdown 
+  .ant-picker-header-super-prev-btn,
+  .ant-picker-dropdown 
+  .ant-picker-header-super-next-btn {
+  display: none;
+}
