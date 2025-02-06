@@ -44,3 +44,15 @@
   .ant-picker-header-super-next-btn {
   display: none;
 }
+
+/* Центрирование года в панели выбора месяцев */
+.custom-datepicker-wrapper .ant-picker-dropdown .ant-picker-month-panel .ant-picker-header-view {
+  text-align: center;
+  flex: 1;
+}
+
+/* Центрирование диапазона лет в панели выбора годов */
+.custom-datepicker-wrapper .ant-picker-dropdown .ant-picker-year-panel .ant-picker-header-view {
+  text-align: center;
+  flex: 1;
+}
