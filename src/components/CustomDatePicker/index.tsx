@@ -6,6 +6,9 @@ import locale from "antd/es/date-picker/locale/ru_RU";
 import "dayjs/locale/ru";
 import "./styles.css";
 
+// Устанавливаем русскую локаль по умолчанию для dayjs
+dayjs.locale("ru");
+
 interface CustomDatePickerProps {
   onChange?: (date: Dayjs | null, dateString: string | string[]) => void;
 }
@@ -102,6 +105,23 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
     );
   };
 
+  const monthCellRender = (currentDate: Dayjs) => {
+    const isCurrentMonth =
+      currentDate.month() === dayjs().month() &&
+      currentDate.year() === dayjs().year();
+
+    // Используем форматирование из antd локали
+    const monthName =
+      locale.lang.shortMonths?.[currentDate.month()] ||
+      currentDate.format("MMM");
+
+    return (
+      <div className={isCurrentMonth ? "current-month-cell" : ""}>
+        {monthName}
+      </div>
+    );
+  };
+
   return (
     <div className="custom-datepicker-wrapper">
       <DatePicker
@@ -121,6 +141,12 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
         superNextIcon={null}
         prevIcon={<PrevArrow />}
         disabledDate={disabledDate}
+        cellRender={(current, { type, originNode }) => {
+          if (type === "month") {
+            return monthCellRender(dayjs(current));
+          }
+          return originNode;
+        }}
       />
     </div>
   );

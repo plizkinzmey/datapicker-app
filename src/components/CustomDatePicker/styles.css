@@ -183,3 +183,9 @@
   .ant-picker-cell-inner {
   background: #d2233c !important;
 }
+
+/* Стили для текущего месяца на панели выбора месяцев */
+.custom-datepicker-wrapper .current-month-cell {
+  color: #d2233c !important;
+  font-weight: bold !important;
+}
