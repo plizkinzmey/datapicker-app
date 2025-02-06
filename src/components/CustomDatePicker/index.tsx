@@ -122,6 +122,15 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
     );
   };
 
+  const yearCellRender = (currentDate: Dayjs) => {
+    const isCurrentYear = currentDate.year() === dayjs().year();
+    return (
+      <div className={isCurrentYear ? 'current-year-cell' : ''}>
+        {currentDate.format('YYYY')}
+      </div>
+    );
+  };
+
   return (
     <div className="custom-datepicker-wrapper">
       <DatePicker
@@ -144,6 +153,9 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
         cellRender={(current, { type, originNode }) => {
           if (type === "month") {
             return monthCellRender(dayjs(current));
+          }
+          if (type === "year") {
+            return yearCellRender(dayjs(current));
           }
           return originNode;
         }}

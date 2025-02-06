@@ -189,3 +189,9 @@
   color: #d2233c !important;
   font-weight: bold !important;
 }
+
+/* Стили для текущего года на панели выбора годов */
+.custom-datepicker-wrapper .current-year-cell {
+  color: #d2233c !important;
+  font-weight: bold !important;
+}
