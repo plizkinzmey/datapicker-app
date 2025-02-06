@@ -34,7 +34,6 @@
 
 .custom-datepicker-wrapper .ant-picker-dropdown 
   .ant-picker-header-prev-btn, 
-  .ant-picker-dropdown 
   .ant-picker-header-next-btn {
   order: 2;
   padding: 0 4px;
@@ -42,12 +41,6 @@
 
 .custom-datepicker-wrapper .ant-picker-dropdown 
   .ant-picker-header-super-prev-btn,
-  .ant-picker-dropdown 
   .ant-picker-header-super-next-btn {
   display: none;
-}
-
-.custom-datepicker-wrapper .ant-picker-dropdown 
-  .ant-picker-header-prev-btn {
-  right: 32px;
 }
