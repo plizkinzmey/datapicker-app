@@ -1,5 +1,6 @@
 import { DatePicker } from 'antd';
 import type { Dayjs } from 'dayjs';
+import locale from 'antd/es/date-picker/locale/ru_RU';
 import './styles.css';
 
 interface CustomDatePickerProps {
@@ -15,7 +16,7 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
 
   return (
     <div className="custom-datepicker-wrapper">
-      <DatePicker onChange={handleChange} />
+      <DatePicker locale={locale} onChange={handleChange} />
     </div>
   );
 };
