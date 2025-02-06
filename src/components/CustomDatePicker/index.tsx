@@ -10,8 +10,10 @@ interface CustomDatePickerProps {
 
 const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
   const [mode, setMode] = React.useState<'date' | 'month' | 'year'>('date');
+  const [selectedDate, setSelectedDate] = React.useState<Dayjs | null>(null);
 
   const handleChange = (date: Dayjs | null, dateString: string | string[]) => {
+    setSelectedDate(date);
     if (onChange) {
       onChange(date, dateString);
     }
@@ -26,14 +28,23 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
     }
   };
 
+  const handleOpenChange = (open: boolean) => {
+    if (!open) {
+      setMode('date');
+    }
+  };
+
   return (
     <div className="custom-datepicker-wrapper">
       <DatePicker 
         locale={locale} 
         onChange={handleChange}
         onPanelChange={handlePanelChange}
+        onOpenChange={handleOpenChange}
         mode={mode}
         showToday={false}
+        value={selectedDate}
+        allowClear
         getPopupContainer={trigger =>
           trigger.parentElement ? trigger.parentElement : document.body
         }
