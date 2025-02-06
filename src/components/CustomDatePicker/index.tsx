@@ -106,42 +106,41 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
   };
 
   const monthCellRender = (currentDate: Dayjs) => {
-    const isCurrentMonth = currentDate.month() === dayjs().month() && 
-                          currentDate.year() === dayjs().year();
-    const isSelectedMonth = selectedDate && 
-                          currentDate.month() === selectedDate.month() &&
-                          currentDate.year() === selectedDate.year();
+    const isCurrentMonth =
+      currentDate.month() === dayjs().month() &&
+      currentDate.year() === dayjs().year();
+    const isSelectedMonth =
+      selectedDate &&
+      currentDate.month() === selectedDate.month() &&
+      currentDate.year() === selectedDate.year();
 
     const className = [
-      isSelectedMonth ? 'selected-cell' : '',
-      isCurrentMonth ? 'current-month-cell' : ''
-    ].filter(Boolean).join(' ');
+      isSelectedMonth ? "selected-cell" : "",
+      isCurrentMonth ? "current-month-cell" : "",
+    ]
+      .filter(Boolean)
+      .join(" ");
 
-    const monthName = locale.lang.shortMonths?.[currentDate.month()] ||
-                     currentDate.format("MMM");
+    const monthName =
+      locale.lang.shortMonths?.[currentDate.month()] ||
+      currentDate.format("MMM");
 
-    return (
-      <div className={className}>
-        {monthName}
-      </div>
-    );
+    return <div className={className}>{monthName}</div>;
   };
 
   const yearCellRender = (currentDate: Dayjs) => {
     const isCurrentYear = currentDate.year() === dayjs().year();
-    const isSelectedYear = selectedDate && 
-                         currentDate.year() === selectedDate.year();
+    const isSelectedYear =
+      selectedDate && currentDate.year() === selectedDate.year();
 
     const className = [
-      isSelectedYear ? 'selected-cell' : '',
-      isCurrentYear ? 'current-year-cell' : ''
-    ].filter(Boolean).join(' ');
+      isSelectedYear ? "selected-cell" : "",
+      isCurrentYear ? "current-year-cell" : "",
+    ]
+      .filter(Boolean)
+      .join(" ");
 
-    return (
-      <div className={className}>
-        {currentDate.format('YYYY')}
-      </div>
-    );
+    return <div className={className}>{currentDate.format("YYYY")}</div>;
   };
 
   return (
@@ -155,7 +154,7 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
         showToday={false}
         value={selectedDate}
         allowClear
-        format="D MMMM YYYY"
+        format="DD.MM.YYYY" // Изменили формат с "D MMMM YYYY" на "DD.MM.YYYY"
         getPopupContainer={(trigger) =>
           trigger.parentElement ? trigger.parentElement : document.body
         }

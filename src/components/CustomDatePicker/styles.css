@@ -82,13 +82,19 @@
 }
 
 /* Отключаем кликабельность заголовка десятилетий */
-.custom-datepicker-wrapper .ant-picker-year-panel .ant-picker-header-view button {
+.custom-datepicker-wrapper
+  .ant-picker-year-panel
+  .ant-picker-header-view
+  button {
   pointer-events: none;
   cursor: default;
 }
 
 /* Убираем подсветку при наведении */
-.custom-datepicker-wrapper .ant-picker-year-panel .ant-picker-header-view button:hover {
+.custom-datepicker-wrapper
+  .ant-picker-year-panel
+  .ant-picker-header-view
+  button:hover {
   color: inherit;
 }
 
@@ -229,19 +235,33 @@
 /* Отключаем ховер-эффекты для всех ячеек */
 .custom-datepicker-wrapper .ant-picker-cell:hover .ant-picker-cell-inner,
 .custom-datepicker-wrapper .ant-picker-cell:hover,
-.custom-datepicker-wrapper .ant-picker-cell-in-view:hover .ant-picker-cell-inner,
+.custom-datepicker-wrapper
+  .ant-picker-cell-in-view:hover
+  .ant-picker-cell-inner,
 .custom-datepicker-wrapper .ant-picker-cell-in-view:hover {
   background: none !important;
 }
 
 /* Отключаем ховер для месяцев */
-.custom-datepicker-wrapper .ant-picker-month-panel .ant-picker-cell:hover .ant-picker-cell-inner,
-.custom-datepicker-wrapper .ant-picker-month-panel .ant-picker-cell-in-view:hover .ant-picker-cell-inner {
+.custom-datepicker-wrapper
+  .ant-picker-month-panel
+  .ant-picker-cell:hover
+  .ant-picker-cell-inner,
+.custom-datepicker-wrapper
+  .ant-picker-month-panel
+  .ant-picker-cell-in-view:hover
+  .ant-picker-cell-inner {
   background: none !important;
 }
 
 /* Отключаем ховер для годов */
-.custom-datepicker-wrapper .ant-picker-year-panel .ant-picker-cell:hover .ant-picker-cell-inner,
-.custom-datepicker-wrapper .ant-picker-year-panel .ant-picker-cell-in-view:hover .ant-picker-cell-inner {
+.custom-datepicker-wrapper
+  .ant-picker-year-panel
+  .ant-picker-cell:hover
+  .ant-picker-cell-inner,
+.custom-datepicker-wrapper
+  .ant-picker-year-panel
+  .ant-picker-cell-in-view:hover
+  .ant-picker-cell-inner {
   background: none !important;
 }
