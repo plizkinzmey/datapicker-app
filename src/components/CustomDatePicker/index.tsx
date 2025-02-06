@@ -6,23 +6,29 @@ import locale from "antd/es/date-picker/locale/ru_RU";
 import "dayjs/locale/ru";
 import "./styles.css";
 
-// Устанавливаем русскую локаль по умолчанию для dayjs
+// Устанавливаем русскую локаль по умолчанию для всех операций с датами
 dayjs.locale("ru");
 
+// Интерфейс для пропсов компонента, позволяющий передать функцию обработки изменения даты
 interface CustomDatePickerProps {
   onChange?: (date: Dayjs | null, dateString: string | string[]) => void;
 }
 
+// Интерфейс для пропсов кнопки навигации
 interface PrevArrowProps {
   onClick?: () => void;
   viewDate?: string | number | Date | Dayjs;
 }
 
 const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
+  // Состояние для отслеживания текущего режима отображения (дата/месяц/год)
   const [mode, setMode] = React.useState<"date" | "month" | "year">("date");
+  // Состояние для хранения выбранной даты
   const [selectedDate, setSelectedDate] = React.useState<Dayjs | null>(null);
+  // Состояние для отслеживания отображаемой даты в календаре
   const [viewDate, setViewDate] = React.useState<Dayjs>(dayjs());
 
+  // Обработчик изменения выбранной даты
   const handleChange = (date: Dayjs | null, dateString: string | string[]) => {
     setSelectedDate(date);
     if (onChange) {
@@ -30,7 +36,7 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
     }
   };
 
-  // Обработчик изменения отображаемой даты
+  // Обработчик изменения режима отображения и предотвращение перехода в режим десятилетий
   const handlePanelChange = (date: Dayjs | null, newMode: string) => {
     if (date) {
       setViewDate(date);
@@ -43,13 +49,14 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
     }
   };
 
+  // Сброс режима на выбор даты при закрытии календаря
   const handleOpenChange = (open: boolean) => {
     if (!open) {
       setMode("date");
     }
   };
 
-  // Локаль для панели выбора дат
+  // Кастомизация локали для корректного отображения месяцев и годов
   const datePanelLocale = {
     ...locale,
     lang: {
@@ -59,7 +66,7 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
     },
   };
 
-  // Функция определения нужной локали
+  // Выбор подходящей локали в зависимости от режима отображения
   const getLocale = () => {
     if (mode === "date") {
       return datePanelLocale;
@@ -67,7 +74,7 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
     return locale;
   };
 
-  // Функция проверки заблокированных дат
+  // Функция определения заблокированных дат (все даты до текущего месяца)
   const disabledDate = (current: Dayjs) => {
     const currentDate = dayjs();
 
@@ -86,7 +93,7 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
     return false;
   };
 
-  // Компонент для кнопки "Предыдущий"
+  // Кастомный компонент для кнопки "Предыдущий"
   const PrevArrow = ({ onClick }: PrevArrowProps) => {
     const currentMonth = viewDate.startOf("month");
     const currentSystemMonth = dayjs().startOf("month");
@@ -105,6 +112,7 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
     );
   };
 
+  // Рендер ячейки месяца с поддержкой выделения текущего и выбранного месяца
   const monthCellRender = (currentDate: Dayjs) => {
     const isCurrentMonth =
       currentDate.month() === dayjs().month() &&
@@ -128,6 +136,7 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
     return <div className={className}>{monthName}</div>;
   };
 
+  // Рендер ячейки года с поддержкой выделения текущего и выбранного года
   const yearCellRender = (currentDate: Dayjs) => {
     const isCurrentYear = currentDate.year() === dayjs().year();
     const isSelectedYear =
