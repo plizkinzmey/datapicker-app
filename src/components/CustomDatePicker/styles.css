@@ -22,11 +22,14 @@
 .custom-datepicker-wrapper .ant-picker-dropdown .ant-picker-header {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
+  padding: 0 8px;
 }
 
 .custom-datepicker-wrapper .ant-picker-dropdown .ant-picker-header-view {
-  margin-right: auto;
+  padding: 0;
+  margin: 0;
+  text-align: left;
 }
 
 .custom-datepicker-wrapper .ant-picker-dropdown 
@@ -34,7 +37,7 @@
   .ant-picker-dropdown 
   .ant-picker-header-next-btn {
   order: 2;
-  margin-left: 8px;
+  padding: 0 4px;
 }
 
 .custom-datepicker-wrapper .ant-picker-dropdown 
@@ -42,4 +45,9 @@
   .ant-picker-dropdown 
   .ant-picker-header-super-next-btn {
   display: none;
+}
+
+.custom-datepicker-wrapper .ant-picker-dropdown 
+  .ant-picker-header-prev-btn {
+  right: 32px;
 }
