@@ -37,7 +37,11 @@
   text-transform: capitalize;
 }
 
-.custom-datepicker-wrapper .ant-picker-dropdown .ant-picker-header-view button > div {
+.custom-datepicker-wrapper
+  .ant-picker-dropdown
+  .ant-picker-header-view
+  button
+  > div {
   white-space: normal;
   width: auto;
 }
@@ -46,27 +50,43 @@
   white-space: nowrap;
 }
 
-.custom-datepicker-wrapper .ant-picker-dropdown 
-  .ant-picker-header-prev-btn, 
-  .ant-picker-header-next-btn {
+.custom-datepicker-wrapper .ant-picker-dropdown .ant-picker-header-prev-btn,
+.ant-picker-header-next-btn {
   order: 2;
   padding: 0 4px;
 }
 
-.custom-datepicker-wrapper .ant-picker-dropdown 
+.custom-datepicker-wrapper
+  .ant-picker-dropdown
   .ant-picker-header-super-prev-btn,
-  .ant-picker-header-super-next-btn {
+.ant-picker-header-super-next-btn {
   display: none;
 }
 
 /* Центрирование года в панели выбора месяцев */
-.custom-datepicker-wrapper .ant-picker-dropdown .ant-picker-month-panel .ant-picker-header-view {
+.custom-datepicker-wrapper
+  .ant-picker-dropdown
+  .ant-picker-month-panel
+  .ant-picker-header-view {
   text-align: center;
   flex: 1;
 }
 
 /* Центрирование диапазона лет в панели выбора годов */
-.custom-datepicker-wrapper .ant-picker-dropdown .ant-picker-year-panel .ant-picker-header-view {
+.custom-datepicker-wrapper
+  .ant-picker-dropdown
+  .ant-picker-year-panel
+  .ant-picker-header-view {
   text-align: center;
   flex: 1;
+}
+
+/* Стили для заблокированной кнопки навигации */
+.custom-datepicker-wrapper .ant-picker-header-prev-btn.disabled {
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+}
+
+.custom-datepicker-wrapper .ant-picker-header-prev-btn.disabled:hover {
+  color: rgba(0, 0, 0, 0.25);
 }

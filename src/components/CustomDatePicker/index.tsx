@@ -1,6 +1,7 @@
 import React from "react";
 import { DatePicker } from "antd";
 import type { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import locale from "antd/es/date-picker/locale/ru_RU";
 import "dayjs/locale/ru";
 import "./styles.css";
@@ -9,9 +10,15 @@ interface CustomDatePickerProps {
   onChange?: (date: Dayjs | null, dateString: string | string[]) => void;
 }
 
+interface PrevArrowProps {
+  onClick?: () => void;
+  viewDate?: string | number | Date | Dayjs;
+}
+
 const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
   const [mode, setMode] = React.useState<"date" | "month" | "year">("date");
   const [selectedDate, setSelectedDate] = React.useState<Dayjs | null>(null);
+  const [viewDate, setViewDate] = React.useState<Dayjs>(dayjs());
 
   const handleChange = (date: Dayjs | null, dateString: string | string[]) => {
     setSelectedDate(date);
@@ -20,7 +27,11 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
     }
   };
 
-  const handlePanelChange = (_: Dayjs | null, newMode: string) => {
+  // Обработчик изменения отображаемой даты
+  const handlePanelChange = (date: Dayjs | null, newMode: string) => {
+    if (date) {
+      setViewDate(date);
+    }
     if (newMode === "decade") {
       // Оставляем режим year при попытке переключения на decade
       setMode("year");
@@ -53,6 +64,25 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
     return locale;
   };
 
+  // Компонент для кнопки "Предыдущий"
+  const PrevArrow = ({ onClick }: PrevArrowProps) => {
+    const currentMonth = viewDate.startOf("month");
+    const currentSystemMonth = dayjs().startOf("month");
+    const isDisabled =
+      mode === "date" && currentMonth.isSame(currentSystemMonth);
+
+    return (
+      <button
+        type="button"
+        onClick={isDisabled ? undefined : onClick}
+        className={`ant-picker-header-prev-btn ${isDisabled ? "disabled" : ""}`}
+        disabled={isDisabled}
+      >
+        <span className="ant-picker-prev-icon" />
+      </button>
+    );
+  };
+
   return (
     <div className="custom-datepicker-wrapper">
       <DatePicker
@@ -70,6 +100,7 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
         }
         superPrevIcon={null}
         superNextIcon={null}
+        prevIcon={<PrevArrow />}
       />
     </div>
   );
