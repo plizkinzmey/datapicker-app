@@ -2,6 +2,7 @@ import React from 'react';
 import { DatePicker } from 'antd';
 import type { Dayjs } from 'dayjs';
 import locale from 'antd/es/date-picker/locale/ru_RU';
+import 'dayjs/locale/ru';
 import './styles.css';
 
 interface CustomDatePickerProps {
@@ -39,6 +40,7 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
     lang: {
       ...locale.lang,
       monthFormat: 'MMMM',
+      yearFormat: 'YYYY',
     },
   };
 
@@ -53,7 +55,7 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
         showToday={false}
         value={selectedDate}
         allowClear
-        format="D MMM YYYY"
+        format="D MMMM YYYY"
         getPopupContainer={trigger =>
           trigger.parentElement ? trigger.parentElement : document.body
         }
