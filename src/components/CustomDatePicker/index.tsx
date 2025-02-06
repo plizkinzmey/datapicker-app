@@ -16,7 +16,13 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
 
   return (
     <div className="custom-datepicker-wrapper">
-      <DatePicker locale={locale} onChange={handleChange} />
+      <DatePicker 
+        locale={locale} 
+        onChange={handleChange}
+        superNextIcon={null}
+        superPrevIcon={null}
+        showToday={false}
+      />
     </div>
   );
 };
