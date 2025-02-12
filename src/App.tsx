@@ -1,42 +1,37 @@
-import { useState } from 'react'
-import type { Dayjs } from 'dayjs'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import CustomDatePicker from './components/CustomDatePicker'
-import './App.css'
+import { Form, Button } from 'antd';
+import CustomDatePicker from './components/CustomDatePicker';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [form] = Form.useForm();
 
-  const onChange = (date: Dayjs | null, dateString: string | string[]) => {
-    console.log(date, dateString);
+  const onFinish = (values: any) => {
+    console.log('Полученные значения:', values);
   };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <CustomDatePicker onChange={onChange} />
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      <Form
+        form={form}
+        onFinish={onFinish}
+        layout="vertical"
+      >
+        <Form.Item
+          label="Выберите дату"
+          name="date"
+          rules={[{ required: true, message: 'Пожалуйста, выберите дату' }]}
+        >
+          <CustomDatePicker />
+        </Form.Item>
+        
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Отправить
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
+  );
 }
 
-export default App
+export default App;

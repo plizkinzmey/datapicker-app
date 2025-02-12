@@ -9,9 +9,10 @@ import "./styles.css";
 // Устанавливаем русскую локаль по умолчанию для всех операций с датами
 dayjs.locale("ru");
 
-// Интерфейс для пропсов компонента, позволяющий передать функцию обработки изменения даты
+// Обновленный интерфейс для пропсов компонента
 interface CustomDatePickerProps {
-  onChange?: (date: Dayjs | null, dateString: string | string[]) => void;
+  value?: string | null;
+  onChange?: (value: string | null) => void;
 }
 
 // Интерфейс для пропсов кнопки навигации
@@ -20,19 +21,19 @@ interface PrevArrowProps {
   viewDate?: string | number | Date | Dayjs;
 }
 
-const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
+const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ value, onChange }) => {
   // Состояние для отслеживания текущего режима отображения (дата/месяц/год)
   const [mode, setMode] = React.useState<"date" | "month" | "year">("date");
-  // Состояние для хранения выбранной даты
-  const [selectedDate, setSelectedDate] = React.useState<Dayjs | null>(null);
   // Состояние для отслеживания отображаемой даты в календаре
   const [viewDate, setViewDate] = React.useState<Dayjs>(dayjs());
 
+  // Преобразование строкового значения в Dayjs
+  const dayjsValue = value ? dayjs(value) : null;
+
   // Обработчик изменения выбранной даты
-  const handleChange = (date: Dayjs | null, dateString: string | string[]) => {
-    setSelectedDate(date);
+  const handleChange = (date: Dayjs | null) => {
     if (onChange) {
-      onChange(date, dateString);
+      onChange(date ? date.format("YYYY-MM-DD") : null);
     }
   };
 
@@ -118,9 +119,9 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
       currentDate.month() === dayjs().month() &&
       currentDate.year() === dayjs().year();
     const isSelectedMonth =
-      selectedDate &&
-      currentDate.month() === selectedDate.month() &&
-      currentDate.year() === selectedDate.year();
+      dayjsValue &&
+      currentDate.month() === dayjsValue.month() &&
+      currentDate.year() === dayjsValue.year();
 
     const className = [
       isSelectedMonth ? "selected-cell" : "",
@@ -140,7 +141,7 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
   const yearCellRender = (currentDate: Dayjs) => {
     const isCurrentYear = currentDate.year() === dayjs().year();
     const isSelectedYear =
-      selectedDate && currentDate.year() === selectedDate.year();
+      dayjsValue && currentDate.year() === dayjsValue.year();
 
     const className = [
       isSelectedYear ? "selected-cell" : "",
@@ -161,9 +162,9 @@ const CustomDatePicker = ({ onChange }: CustomDatePickerProps) => {
         onOpenChange={handleOpenChange}
         mode={mode}
         showToday={false}
-        value={selectedDate}
+        value={dayjsValue}
         allowClear
-        format="DD.MM.YYYY" // Изменили формат с "D MMMM YYYY" на "DD.MM.YYYY"
+        format="DD.MM.YYYY"
         getPopupContainer={(trigger) =>
           trigger.parentElement ? trigger.parentElement : document.body
         }
