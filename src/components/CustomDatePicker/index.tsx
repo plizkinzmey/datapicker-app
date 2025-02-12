@@ -15,10 +15,10 @@ interface CustomDatePickerProps {
   onChange?: (value: string | null) => void;
 }
 
-// Интерфейс для пропсов кнопки навигации
-interface PrevArrowProps {
+// Интерфейс для пропсов кнопок навигации
+interface NavigationArrowProps {
   onClick?: () => void;
-  viewDate?: string | number | Date | Dayjs;
+  direction: 'prev' | 'next';
 }
 
 const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ value, onChange }) => {
@@ -94,21 +94,23 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ value, onChange }) 
     return false;
   };
 
-  // Кастомный компонент для кнопки "Предыдущий"
-  const PrevArrow = ({ onClick }: PrevArrowProps) => {
+  // Обновленный компонент для кнопок навигации
+  const NavigationArrow = ({ onClick, direction }: NavigationArrowProps) => {
     const currentMonth = viewDate.startOf("month");
     const currentSystemMonth = dayjs().startOf("month");
     const isDisabled =
-      mode === "date" && currentMonth.isSame(currentSystemMonth);
+      mode === "date" && 
+      direction === 'prev' && 
+      currentMonth.isSame(currentSystemMonth);
 
     return (
       <button
         type="button"
         onClick={isDisabled ? undefined : onClick}
-        className={`ant-picker-header-prev-btn ${isDisabled ? "disabled" : ""}`}
+        className={`ant-picker-header-${direction}-btn ${isDisabled ? "disabled" : ""}`}
         disabled={isDisabled}
       >
-        <span className="ant-picker-prev-icon" />
+        <span className={`ant-picker-${direction}-icon`} />
       </button>
     );
   };
@@ -170,7 +172,8 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ value, onChange }) 
         }
         superPrevIcon={null}
         superNextIcon={null}
-        prevIcon={<PrevArrow />}
+        prevIcon={<NavigationArrow direction="prev" />}
+        nextIcon={<NavigationArrow direction="next" />}
         disabledDate={disabledDate}
         cellRender={(current, { type, originNode }) => {
           if (type === "month") {
