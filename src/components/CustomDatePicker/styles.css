@@ -269,3 +269,42 @@
   .ant-picker-cell-inner {
   background: none !important;
 }
+
+/* Отключаем подсветку месяца в заголовке */
+.ant-picker-dropdown .ant-picker-header-view .ant-picker-month-btn,
+.ant-picker-dropdown .ant-picker-header-view .ant-picker-year-btn,
+.ant-picker-dropdown .ant-picker-header-view button {
+  color: rgba(0, 0, 0, 0.88) !important;
+  background: none !important;
+  border: none !important;
+}
+
+.ant-picker-dropdown .ant-picker-header-view .ant-picker-month-btn:hover,
+.ant-picker-dropdown .ant-picker-header-view .ant-picker-year-btn:hover,
+.ant-picker-dropdown .ant-picker-header-view button:hover {
+  color: rgba(0, 0, 0, 0.88) !important;
+  background: none !important;
+}
+
+.ant-picker-dropdown .ant-picker-header button.ant-picker-month-btn:hover {
+  color: rgba(0, 0, 0, 0.88) !important;
+}
+
+/* Полное отключение подсветки месяца в заголовке */
+.ant-picker-dropdown .ant-picker-header-view button.ant-picker-month-btn,
+.ant-picker-dropdown .ant-picker-header-view button.ant-picker-month-btn:hover,
+.ant-picker-dropdown .ant-picker-header-view button.ant-picker-month-btn:focus,
+.ant-picker-dropdown .ant-picker-header-view button.ant-picker-month-btn:active {
+  color: inherit !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Отключение подсветки для кнопок в заголовке */
+.ant-picker-dropdown .ant-picker-header-view button {
+  color: inherit !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
