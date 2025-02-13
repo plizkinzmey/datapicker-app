@@ -11,11 +11,15 @@
   width: 100%;
 }
 
-/* Убираем эффекты при наведении и фокусе */
-.custom-datepicker-wrapper .ant-picker:hover,
-.custom-datepicker-wrapper .ant-picker-focused {
+/* Убираем эффекты при наведении и добавляем черную рамку при фокусе */
+.custom-datepicker-wrapper .ant-picker:hover {
   border-color: #d9d9d9;
-  box-shadow: none;
+}
+
+.custom-datepicker-wrapper .ant-picker-focused,
+.custom-datepicker-wrapper .ant-picker:focus {
+  border-color: #000000 !important;
+  box-shadow: none !important;
 }
 
 /* Настройка шапки календаря */
