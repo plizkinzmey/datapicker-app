@@ -104,14 +104,12 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ value, onChange }) 
       currentMonth.isSame(currentSystemMonth);
 
     return (
-      <button
-        type="button"
+      <div 
+        role="button"
         onClick={isDisabled ? undefined : onClick}
-        className={`ant-picker-header-${direction}-btn ${isDisabled ? "disabled" : ""}`}
-        disabled={isDisabled}
-      >
-        <span className={`ant-picker-${direction}-icon`} />
-      </button>
+        className={`ant-picker-${direction}-icon ${isDisabled ? "disabled" : ""}`}
+        aria-disabled={isDisabled}
+      />
     );
   };
 
