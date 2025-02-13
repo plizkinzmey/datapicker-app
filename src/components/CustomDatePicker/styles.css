@@ -8,16 +8,14 @@
   border-radius: 8px;
   padding: 8px 12px;
   border: 2px solid #d9d9d9; /* Двойная рамка для поля ввода */
+  width: 100%;
 }
 
-/* Эффекты при наведении и фокусе на поле ввода */
-.custom-datepicker-wrapper .ant-picker:hover {
-  border-color: #1890ff;
-}
-
+/* Убираем эффекты при наведении и фокусе */
+.custom-datepicker-wrapper .ant-picker:hover,
 .custom-datepicker-wrapper .ant-picker-focused {
-  border-color: #1890ff;
-  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+  border-color: #d9d9d9;
+  box-shadow: none;
 }
 
 /* Настройка шапки календаря */
